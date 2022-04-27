@@ -1,0 +1,22 @@
+{
+  "name": "library-front-end",
+  "version": "0.1.0",
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "parcel build",
+    "start": "parcel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Direct-Entry-Program-8/library-front-end.git"
+  },
+  "author": "DEP8 <dep8@ijse.lk> (https://ijse.lk)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Direct-Entry-Program-8/library-front-end/issues"
+  },
+  "homepage": "https://github.com/Direct-Entry-Program-8/library-front-end#readme",
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  }
+}
