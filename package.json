@@ -1,6 +1,7 @@
 {
   "name": "library-front-end",
   "version": "0.1.0",
+  "source": ["src/index.html"],
   "scripts": {
     "watch": "tsc --watch",
     "build": "parcel build",
