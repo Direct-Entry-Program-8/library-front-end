@@ -1,7 +1,9 @@
 {
   "name": "library-front-end",
   "version": "0.1.0",
-  "source": ["src/index.html"],
+  "source": [
+    "src/index.html"
+  ],
   "scripts": {
     "watch": "tsc --watch",
     "build": "parcel build",
@@ -19,5 +21,8 @@
   "homepage": "https://github.com/Direct-Entry-Program-8/library-front-end#readme",
   "devDependencies": {
     "parcel": "^2.5.0"
+  },
+  "dependencies": {
+    "admin-lte": "^3.2.0"
   }
 }
