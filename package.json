@@ -2,7 +2,7 @@
   "name": "library-front-end",
   "version": "0.1.0",
   "source": [
-    "src/index.html"
+    "src/index2.html"
   ],
   "scripts": {
     "watch": "tsc --watch",
@@ -19,10 +19,10 @@
     "url": "https://github.com/Direct-Entry-Program-8/library-front-end/issues"
   },
   "homepage": "https://github.com/Direct-Entry-Program-8/library-front-end#readme",
-  "devDependencies": {
-    "parcel": "^2.5.0"
-  },
   "dependencies": {
     "admin-lte": "^3.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0"
   }
 }
