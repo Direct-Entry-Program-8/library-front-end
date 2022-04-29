@@ -24,7 +24,7 @@
   <!-- AdminLTE App -->
   <script defer type="module" src="/node_modules/admin-lte/dist/js/adminlte.js"></script>
   <script defer src="ts/main.ts"></script>
-  <script defer src="ts/page/dashboard.ts"></script>
+  <script defer type="module" src="ts/page/dashboard.ts"></script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -144,8 +144,8 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Total Books</span>
-                <span class="info-box-number">
-                  10
+                <span id="spn-total-books" class="info-box-number">
+                  -
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -159,7 +159,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Total Members</span>
-                <span class="info-box-number">41,410</span>
+                <span id="spn-total-members" class="info-box-number">-</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -176,7 +176,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Issued Today</span>
-                <span class="info-box-number">760</span>
+                <span id="spn-totoal-issues" class="info-box-number">-</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -189,7 +189,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Today Returns</span>
-                <span class="info-box-number">2,000</span>
+                <span id="spn-total-returns" class="info-box-number">-</span>
               </div>
               <!-- /.info-box-content -->
             </div>
