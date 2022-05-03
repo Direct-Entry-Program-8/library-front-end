@@ -9,6 +9,21 @@ const txtPreview = document.querySelector<HTMLInputElement>('#txt-preview')!;
 const divThumbnail = document.querySelector<HTMLDivElement>('#thumbnail')!;
 let blobURL: null | string = null;
 
+frmBook.addEventListener('submit', (e)=> {
+    e.preventDefault();
+
+    const inputElms = [txtISBN, txtName, txtAuthor];
+    const invalidInputElms = inputElms.filter(elm => !elm.classList.contains('is-valid'));
+
+    if (invalidInputElms.length > 0){
+        invalidInputElms.forEach(elm => elm.classList.add('is-invalid'));
+        invalidInputElms[0].focus();
+        return;
+    }
+
+    /* Todo: Let's send the data to the backend for saving, right? */
+});
+
 btnRemove.addEventListener('click', () => {
     txtPreview.value = '';
     if (blobURL) URL.revokeObjectURL(blobURL);
