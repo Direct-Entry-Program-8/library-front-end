@@ -96,13 +96,30 @@ const paginationElm = document.querySelector<HTMLUListElement>('#pagination')!;
 const pageSize = 5;
 let booksCount = 55;
 
-initPagination();
+initPagination(1);
 
-function initPagination(){
+function initPagination(activePage: number = 1){
     let pages = Math.ceil(booksCount / pageSize);
+
+    if (activePage < 1 || activePage > pages ) activePage = pages;
+
+    let end = activePage + 4;
+    let start = activePage - 5;
+
+    if (end > pages){
+        start -= (end - pages);
+        end = pages;
+    }
+
+    if (start < 1){
+        end += (1 - start);
+        if (end > pages) end = pages;
+        start = 1;
+    }
+
     let html = `<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>`;
-    for (let i = 0; i < pages; i++) {
-        html += `<li class="page-item"><a class="page-link" href="#">${i+1}</a></li>`
+    for (let i = start; i <= end; i++) {
+        html += `<li class="page-item ${i===activePage?'active':''}"><a class="page-link" href="#">${i}</a></li>`
     }
     html += `<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>`;
     paginationElm.innerHTML = html;
