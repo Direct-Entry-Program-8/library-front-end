@@ -9,6 +9,13 @@ const txtPreview = document.querySelector<HTMLInputElement>('#txt-preview')!;
 const divThumbnail = document.querySelector<HTMLDivElement>('#thumbnail')!;
 let blobURL: null | string = null;
 
+frmBook.addEventListener('reset', ()=> {
+    const inputElms = [txtISBN, txtName, txtAuthor];
+    inputElms.forEach(elm => elm.classList.remove('is-valid', 'is-invalid'));
+    inputElms[0].focus();
+    btnRemove.click();
+});
+
 frmBook.addEventListener('submit', (e)=> {
     e.preventDefault();
 
@@ -54,9 +61,7 @@ function setEnableForm(enable: boolean = true) {
 
 btnNewBook.addEventListener('click', () => {
     setEnableForm();
-    btnRemove.click();
     frmBook.reset();
-    txtISBN.focus();
 });
 
 function checkValidityOfISBN() {
