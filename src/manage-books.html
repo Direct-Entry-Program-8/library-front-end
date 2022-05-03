@@ -27,6 +27,7 @@
     <!-- AdminLTE App -->
     <script defer type="module" src="/node_modules/admin-lte/dist/js/adminlte.js"></script>
     <script defer src="ts/main.ts"></script>
+    <script defer src="ts/page/manage-books.ts"></script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -145,10 +146,10 @@
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Book Details</h3>
-                                <button class="btn btn-success btn-sm float-right">NEW BOOK +</button>
+                                <button id="btn-new-book" class="btn btn-success btn-sm float-right">NEW BOOK +</button>
                             </div>
 
-                            <form>
+                            <form id="frm-book">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label class="col-form-label" for="txt-isbn">ISBN</label>
