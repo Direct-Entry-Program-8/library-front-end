@@ -3,6 +3,10 @@ const frmBook = document.querySelector<HTMLFormElement>('#frm-book')!;
 const txtISBN = document.querySelector<HTMLInputElement>('#txt-isbn')!;
 const txtName = document.querySelector<HTMLInputElement>('#txt-name')!;
 const txtAuthor = document.querySelector<HTMLInputElement>('#txt-author')!;
+const btnBrowse = document.querySelector<HTMLButtonElement>('#btn-browse')!;
+const txtPreview = document.querySelector<HTMLInputElement>('#txt-preview')!;
+
+btnBrowse.addEventListener('click', ()=> txtPreview.click());
 
 setEnableForm(false);
 
