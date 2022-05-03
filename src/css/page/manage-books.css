@@ -1,0 +1,48 @@
+.card-header .card-title{
+    line-height: 31px;
+}
+
+#thumbnail{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+}
+
+#thumbnail-wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#thumbnail-wrapper .d-flex{
+    gap: 10px;
+}
+
+#txt-preview{
+    display: none;
+}
+
+.card-footer button{
+    padding: 5px 10px;
+}
+
+#btn-clear{
+    margin-left: 5px;
+}
+
+.book-preview{
+    width: 60px;
+}
+
+tbody tr{
+    cursor: pointer;
+}
+
+tbody tr td:last-child{
+    width: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    vertical-align: middle;
+}
+
