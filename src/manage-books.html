@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard 2</title>
+  <title>Library Management System | Manage Books</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/node_modules/admin-lte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="css/page/manage-books.css">
 
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
@@ -119,12 +120,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Manage Books</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Manage Books</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -137,6 +138,52 @@
       <div class="container-fluid">
         <!-- Main row -->
         <div class="row">
+          <div class="col-sm-6 col-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Book Details</h3>
+                <button class="btn btn-success btn-sm float-right">NEW BOOK +</button>
+              </div>
+
+              <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="col-form-label" for="txt-isbn">ISBN</label>
+                    <input type="text" class="form-control" id="txt-isbn" placeholder="Enter ISBN">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label" for="txt-name">Name</label>
+                    <input type="text" class="form-control" id="txt-name" placeholder="Enter Book's Name">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label" for="txt-author">Author</label>
+                    <input type="text" class="form-control" id="txt-author" placeholder="Enter Book's Author">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label" for="txt-preview">Preview</label>
+                    <div id="thumbnail-wrapper">
+                      <div id="thumbnail"></div>
+                      <div class="d-flex flex-column">
+                        <button id="btn-browse" class="btn btn-success btn-sm"><i class="fas fa-folder-open"></i> BROWSE</button>
+                        <button id="btn-remove" class="btn btn-danger btn-sm"><i class="fas fa-folder-open"></i> REMOVE</button>
+                      </div>
+                    </div>
+                    <input type="file" id="txt-preview">
+                  </div>
+                </div>
+
+                <div class="card-footer">
+                  <button id="btn-save" type="submit" class="btn btn-primary btn-sm">
+                    SAVE
+                  </button>
+                  <button id="btn-clear" type="submit" class="btn btn-warning btn-sm">
+                    CLEAR
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-sm-6 col-12"></div>
         </div>
         <!-- /.row -->
       </div><!--/. container-fluid -->
