@@ -1,7 +1,14 @@
 {
   "name": "library-front-end",
   "version": "0.1.0",
-  "source": ["src/index.html"],
+  "source": [
+    "src/index.html",
+    "src/manage-books.html",
+    "src/manage-members.html",
+    "src/issue-books.html",
+    "src/return-books.html",
+    "src/settings.html"
+  ],
   "scripts": {
     "watch": "tsc --watch",
     "build": "parcel build",
@@ -17,7 +24,11 @@
     "url": "https://github.com/Direct-Entry-Program-8/library-front-end/issues"
   },
   "homepage": "https://github.com/Direct-Entry-Program-8/library-front-end#readme",
+  "dependencies": {
+    "admin-lte": "^3.2.0"
+  },
   "devDependencies": {
+    "@types/node": "^17.0.30",
     "parcel": "^2.5.0"
   }
 }
