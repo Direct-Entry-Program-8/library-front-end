@@ -7,6 +7,7 @@ const btnBrowse = document.querySelector<HTMLButtonElement>('#btn-browse')!;
 const btnRemove = document.querySelector<HTMLButtonElement>('#btn-remove')!;
 const txtPreview = document.querySelector<HTMLInputElement>('#txt-preview')!;
 const divThumbnail = document.querySelector<HTMLDivElement>('#thumbnail')!;
+
 let blobURL: null | string = null;
 
 frmBook.addEventListener('reset', ()=> {
@@ -89,5 +90,21 @@ function checkValidity(e: Event) {
     } else {
         checkValidityOfAuthor() ? txtAuthor.classList.add('is-valid') : txtAuthor.classList.add('is-invalid');
     }
+}
+
+const paginationElm = document.querySelector<HTMLUListElement>('#pagination')!;
+const pageSize = 5;
+let booksCount = 55;
+
+initPagination();
+
+function initPagination(){
+    let pages = Math.ceil(booksCount / pageSize);
+    let html = `<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>`;
+    for (let i = 0; i < pages; i++) {
+        html += `<li class="page-item"><a class="page-link" href="#">${i+1}</a></li>`
+    }
+    html += `<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>`;
+    paginationElm.innerHTML = html;
 }
 
