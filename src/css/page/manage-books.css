@@ -31,3 +31,18 @@
     margin-left: 5px;
 }
 
+.book-preview{
+    width: 60px;
+}
+
+tbody tr{
+    cursor: pointer;
+}
+
+tbody tr td:last-child{
+    width: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    vertical-align: middle;
+}
+
