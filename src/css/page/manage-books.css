@@ -7,6 +7,9 @@
     height: 150px;
     border: 1px solid #6c757d;
     border-radius: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #thumbnail-wrapper{
