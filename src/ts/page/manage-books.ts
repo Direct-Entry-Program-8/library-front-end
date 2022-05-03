@@ -14,6 +14,7 @@ btnRemove.addEventListener('click', () => {
     if (blobURL) URL.revokeObjectURL(blobURL);
     blobURL = null;
     divThumbnail.style.backgroundImage = '';
+    btnRemove.disabled = true;
 });
 
 btnBrowse.addEventListener('click', () => txtPreview.click());
@@ -22,6 +23,7 @@ txtPreview.addEventListener('input', () => {
         if (blobURL) URL.revokeObjectURL(blobURL);
         blobURL = URL.createObjectURL(txtPreview.files![0]);
         divThumbnail.style.backgroundImage = `url(${blobURL})`;
+        btnRemove.disabled = false;
     }
 });
 
@@ -37,6 +39,7 @@ function setEnableForm(enable: boolean = true) {
 
 btnNewBook.addEventListener('click', () => {
     setEnableForm();
+    btnRemove.click();
     frmBook.reset();
     txtISBN.focus();
 });
