@@ -66,5 +66,5 @@ tr.selected{
 }
 
 .book-preview.no-image{
-    background-image: url("../../image/no-image.jpg");
+    background-image: url("../../image/no-image.jpg") !important;
 }
