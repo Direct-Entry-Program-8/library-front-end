@@ -144,6 +144,13 @@ tblBooks.querySelector("tbody")!.addEventListener('click', (e)=> {
     const row = (e.target as HTMLElement).closest<HTMLTableRowElement>('tr')!;
     tblBooks.querySelectorAll("tr").forEach(elm => elm.classList.remove('selected'));
     row.classList.add('selected');
+    const isbn = row.querySelector<HTMLDivElement>(".isbn")!.innerText;
+    const name = row.querySelector<HTMLDivElement>(".book-name")!.innerText;
+    const author = row.querySelector<HTMLDivElement>(".book-author")!.innerText;
+
+    txtISBN.value = isbn;
+    txtName.value = name;
+    txtAuthor.value = author;
 });
 
 tblBooks.querySelector("tbody")!.addEventListener('click', (e)=>{
