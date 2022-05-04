@@ -192,6 +192,7 @@ tblBooks.querySelector("tbody")!.addEventListener('click', (e)=>{
         }) as Promise<any>;
         promise.then((resolve)=> {
            if (resolve.isConfirmed){
+               frmBook.reset();
                row.remove();
            }
         });
