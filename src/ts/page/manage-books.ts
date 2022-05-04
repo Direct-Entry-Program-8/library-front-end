@@ -223,10 +223,14 @@ function loadBooks(query: string = '', page: number = 1) {
                 preview: string
             }> = JSON.parse(data.body);
 
+            booksCount = +data.http.getResponseHeader('X-Count')!;
+            initPagination(activePage);
+
             books.forEach(book => {
                 const rowElm = document.createElement('tr');
+                rowElm.classList.add(book.availability ? 'available': 'not-available');
                 rowElm.innerHTML = `
-                                <td><div class="book-preview ${book.preview === null ? 'no-image': ''}"  style="background-image: url(${book.preview})"></div></td>
+                                <td><div class="book-preview ${book.preview === null ? 'no-image' : ''}"  style="background-image: url(${book.preview})"></div></td>
                                 <td>
                                     <div class="isbn">ISBN: ${book.isbn}</div>
                                     <div class="book-name text-bold">${book.name}</div>

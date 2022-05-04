@@ -57,6 +57,14 @@ tr.selected{
     background-color: #0c84ff !important;
 }
 
+tr.available{
+    border-left: 2px solid green;
+}
+
+tr.not-available{
+    border-left: 2px solid orangered;
+}
+
 .book-preview{
     width: 60px;
     height: 80px;
