@@ -7,7 +7,8 @@ const btnBrowse = document.querySelector<HTMLButtonElement>('#btn-browse')!;
 const btnRemove = document.querySelector<HTMLButtonElement>('#btn-remove')!;
 const txtPreview = document.querySelector<HTMLInputElement>('#txt-preview')!;
 const divThumbnail = document.querySelector<HTMLDivElement>('#thumbnail')!;
-
+const btnSave = document.querySelector<HTMLButtonElement>('#btn-save')!;
+const btnClear = document.querySelector<HTMLButtonElement>('#btn-clear')!;
 
 let blobURL: null | string = null;
 
@@ -15,7 +16,10 @@ frmBook.addEventListener('reset', ()=> {
     const inputElms = [txtISBN, txtName, txtAuthor];
     inputElms.forEach(elm => elm.classList.remove('is-valid', 'is-invalid'));
     inputElms[0].focus();
+    divThumbnail.style.backgroundImage = '';
+    tblBooks.querySelectorAll("tr").forEach(elm => elm.classList.remove('selected'));
     btnRemove.click();
+    btnSave.innerText = 'SAVE';
 });
 
 frmBook.addEventListener('submit', (e)=> {
@@ -147,10 +151,17 @@ tblBooks.querySelector("tbody")!.addEventListener('click', (e)=> {
     const isbn = row.querySelector<HTMLDivElement>(".isbn")!.innerText;
     const name = row.querySelector<HTMLDivElement>(".book-name")!.innerText;
     const author = row.querySelector<HTMLDivElement>(".book-author")!.innerText;
+    const bookPreview = row.querySelector<HTMLImageElement>('.book-preview')!;
 
     txtISBN.value = isbn;
+
     txtName.value = name;
     txtAuthor.value = author;
+    divThumbnail.style.backgroundImage = `url(${bookPreview.src})`;
+    setEnableForm(false);
+    btnSave.disabled = false;
+    btnClear.disabled = false;
+    btnSave.innerText = 'EDIT';
 });
 
 tblBooks.querySelector("tbody")!.addEventListener('click', (e)=>{
