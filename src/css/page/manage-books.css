@@ -52,3 +52,7 @@ tbody tr td:last-child{
 tbody tr td:last-child:hover{
     color: red;
 }
+
+tr.selected{
+    background-color: #0c84ff;
+}
