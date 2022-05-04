@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/Direct-Entry-Program-8/library-front-end#readme",
   "dependencies": {
-    "admin-lte": "^3.2.0"
+    "admin-lte": "^3.2.0",
+    "sweetalert2": "^11.4.10"
   },
   "devDependencies": {
     "@types/node": "^17.0.30",

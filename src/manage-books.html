@@ -26,7 +26,10 @@
             src="/node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script defer type="module" src="/node_modules/admin-lte/dist/js/adminlte.js"></script>
+    <script defer src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
     <script defer src="ts/main.ts"></script>
+    <script defer src="ts/page/manage-books.ts"></script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -141,14 +144,14 @@
             <div class="container-fluid">
                 <!-- Main row -->
                 <div class="row">
-                    <div class="col-sm-6 col-12">
+                    <div class="col-md-6 col-12">
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Book Details</h3>
-                                <button class="btn btn-success btn-sm float-right">NEW BOOK +</button>
+                                <button id="btn-new-book" class="btn btn-success btn-sm float-right">NEW BOOK +</button>
                             </div>
 
-                            <form>
+                            <form id="frm-book">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label class="col-form-label" for="txt-isbn">ISBN</label>
@@ -169,15 +172,15 @@
                                         <div id="thumbnail-wrapper">
                                             <div id="thumbnail"></div>
                                             <div class="d-flex flex-column">
-                                                <button id="btn-browse" class="btn btn-success btn-sm"><i
+                                                <button type="button" id="btn-browse" class="btn btn-success btn-sm"><i
                                                         class="fas fa-folder-open"></i> BROWSE
                                                 </button>
-                                                <button id="btn-remove" class="btn btn-danger btn-sm"><i
-                                                        class="fas fa-folder-open"></i> REMOVE
+                                                <button type="button" id="btn-remove" class="btn btn-danger btn-sm"><i
+                                                        class="fas fa-trash"></i> REMOVE
                                                 </button>
                                             </div>
                                         </div>
-                                        <input type="file" id="txt-preview">
+                                        <input accept="image/*" type="file" id="txt-preview">
                                     </div>
                                 </div>
 
@@ -185,14 +188,14 @@
                                     <button id="btn-save" type="submit" class="btn btn-primary btn-sm">
                                         SAVE
                                     </button>
-                                    <button id="btn-clear" type="submit" class="btn btn-warning btn-sm">
+                                    <button id="btn-clear" type="reset" class="btn btn-warning btn-sm">
                                         CLEAR
                                     </button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-12">
+                    <div class="col-md-6 col-12">
                         <div class="card">
                             <div class="card-header">
                                 <div>
@@ -212,41 +215,35 @@
                                 <table class="table table-hover text-nowrap">
                                     <tbody>
                                     <tr>
-                                        <td><img class="book-preview"
-                                                 src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1392593226l/12545373.jpg"
-                                                 alt="preview"></td>
+                                        <td><div class="book-preview" style="background-image: url('https://m.media-amazon.com/images/I/51EWRgaqIKL.jpg')"></div></td>
                                         <td>
                                             <div class="isbn">ISBN: 123456789</div>
                                             <div class="book-name text-bold">Java 8 Complete Reference</div>
                                             <div class="book-author">James Gosling</div>
                                         </td>
-                                        <td>
+                                        <td class="trash">
                                             <i class="fas fa-trash"></i>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><img class="book-preview"
-                                                 src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1392593226l/12545373.jpg"
-                                                 alt="preview"></td>
+                                        <td><div class="book-preview no-image"></div></td>
                                         <td>
-                                            <div class="isbn">ISBN: 123456789</div>
-                                            <div class="book-name text-bold">Java 8 Complete Reference</div>
-                                            <div class="book-author">James Gosling</div>
+                                            <div class="isbn">ISBN: 456789123</div>
+                                            <div class="book-name text-bold">Direct Entry Program 8</div>
+                                            <div class="book-author">Prasad Sir</div>
                                         </td>
-                                        <td>
+                                        <td class="trash">
                                             <i class="fas fa-trash"></i>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><img class="book-preview"
-                                                 src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1392593226l/12545373.jpg"
-                                                 alt="preview"></td>
+                                        <td><div class="book-preview" style="background-image: url('https://m.media-amazon.com/images/I/51EWRgaqIKL.jpg')"></div></td>
                                         <td>
                                             <div class="isbn">ISBN: 123456789</div>
                                             <div class="book-name text-bold">Java 8 Complete Reference</div>
                                             <div class="book-author">James Gosling</div>
                                         </td>
-                                        <td>
+                                        <td class="trash">
                                             <i class="fas fa-trash"></i>
                                         </td>
                                     </tr>
@@ -255,12 +252,8 @@
                             </div>
 
                             <div class="card-footer clearfix">
-                                <ul class="pagination pagination-sm m-0 justify-content-center">
-                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                <ul id="pagination" class="pagination pagination-sm m-0 justify-content-center">
+
                                 </ul>
                             </div>
 

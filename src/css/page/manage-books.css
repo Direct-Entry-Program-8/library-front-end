@@ -7,6 +7,9 @@
     height: 150px;
     border: 1px solid #6c757d;
     border-radius: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #thumbnail-wrapper{
@@ -46,3 +49,22 @@ tbody tr td:last-child{
     vertical-align: middle;
 }
 
+tbody tr td:last-child:hover{
+    color: red;
+}
+
+tr.selected{
+    background-color: #0c84ff !important;
+}
+
+.book-preview{
+    width: 60px;
+    height: 80px;
+    background-size: contain;
+    background-repeat:  no-repeat;
+    background-position: center;
+}
+
+.book-preview.no-image{
+    background-image: url("../../image/no-image.jpg");
+}
