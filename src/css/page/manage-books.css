@@ -49,3 +49,6 @@ tbody tr td:last-child{
     vertical-align: middle;
 }
 
+tbody tr td:last-child:hover{
+    color: red;
+}

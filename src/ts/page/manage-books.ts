@@ -8,6 +8,7 @@ const btnRemove = document.querySelector<HTMLButtonElement>('#btn-remove')!;
 const txtPreview = document.querySelector<HTMLInputElement>('#txt-preview')!;
 const divThumbnail = document.querySelector<HTMLDivElement>('#thumbnail')!;
 
+
 let blobURL: null | string = null;
 
 frmBook.addEventListener('reset', ()=> {
@@ -114,11 +115,12 @@ function initPagination(page: number = 1){
         if (end > pages) end = pages;
         start = 1;
     }
-    let html = `<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>`;
+
+    let html = `<li class="page-item ${activePage === 1 ? 'disabled': ''}"><a class="page-link" href="javascript:void(0)">&laquo;</a></li>`;
     for (let i = start; i <= end; i++) {
-        html += `<li class="page-item ${i===page?'active':''}"><a class="page-link" href="#">${i}</a></li>`
+        html += `<li class="page-item ${i===page?'active':''}"><a class="page-link" href="javascript:void(0)">${i}</a></li>`
     }
-    html += `<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>`;
+    html += `<li class="page-item ${activePage === pages ? 'disabled': ''}"><a class="page-link" href="javascript:void(0)">&raquo;</a></li>`;
     paginationElm.innerHTML = html;
 }
 
@@ -133,6 +135,20 @@ paginationElm.addEventListener('click', (e)=> {
             initPagination(+elm.innerText);
         }
         e.stopPropagation();
+    }
+});
+
+const tblBooks = document.querySelector<HTMLTableElement>("table")!;
+
+tblBooks.querySelector("tbody")!.addEventListener('click', (e)=>{
+    if ((e.target as HTMLElement).classList.contains('trash') ||
+        (e.target as HTMLElement).classList.contains('fa-trash')){
+        const elm = e.target as HTMLElement;
+        const row = elm.closest<HTMLTableRowElement>('tr')!;
+        const isbn = (row.querySelector<HTMLDivElement>(".isbn")!.innerText);
+        if (confirm(`Are you sure to delete the ${isbn}?`)){
+            row.remove();
+        }
     }
 });
 
