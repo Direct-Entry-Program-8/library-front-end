@@ -28,6 +28,7 @@ frmBook.addEventListener('submit', (e)=> {
     if (btnSave.innerText === 'EDIT'){
         setEnableForm();
         btnSave.innerText = 'SAVE';
+        btnRemove.disabled = !divThumbnail.style.backgroundImage;
         return;
     }
 
@@ -154,12 +155,16 @@ tblBooks.querySelector("tbody")!.addEventListener('click', (e)=> {
     const row = (e.target as HTMLElement).closest<HTMLTableRowElement>('tr')!;
     tblBooks.querySelectorAll("tr").forEach(elm => elm.classList.remove('selected'));
     row.classList.add('selected');
-    const isbn = row.querySelector<HTMLDivElement>(".isbn")!.innerText;
+    const isbn = row.querySelector<HTMLDivElement>(".isbn")!.innerText.replace('ISBN: ', '').trim();
     const name = row.querySelector<HTMLDivElement>(".book-name")!.innerText;
     const author = row.querySelector<HTMLDivElement>(".book-author")!.innerText;
     const bookPreview = row.querySelector<HTMLDivElement>('.book-preview')!;
 
     txtISBN.value = isbn;
+
+    txtISBN.classList.add('is-valid');
+    txtName.classList.add('is-valid');
+    txtAuthor.classList.add('is-valid');
 
     txtName.value = name;
     txtAuthor.value = author;
