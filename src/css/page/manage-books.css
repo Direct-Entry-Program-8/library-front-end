@@ -54,5 +54,5 @@ tbody tr td:last-child:hover{
 }
 
 tr.selected{
-    background-color: #0c84ff;
+    background-color: #0c84ff !important;
 }

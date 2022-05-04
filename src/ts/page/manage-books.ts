@@ -142,12 +142,14 @@ const tblBooks = document.querySelector<HTMLTableElement>("table")!;
 
 tblBooks.querySelector("tbody")!.addEventListener('click', (e)=> {
     const row = (e.target as HTMLElement).closest<HTMLTableRowElement>('tr')!;
+    tblBooks.querySelectorAll("tr").forEach(elm => elm.classList.remove('selected'));
     row.classList.add('selected');
 });
 
 tblBooks.querySelector("tbody")!.addEventListener('click', (e)=>{
     if ((e.target as HTMLElement).classList.contains('trash') ||
         (e.target as HTMLElement).classList.contains('fa-trash')){
+        e.stopPropagation();
         const elm = e.target as HTMLElement;
         const row = elm.closest<HTMLTableRowElement>('tr')!;
         const isbn = (row.querySelector<HTMLDivElement>(".isbn")!.innerText);
