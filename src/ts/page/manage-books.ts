@@ -146,9 +146,25 @@ tblBooks.querySelector("tbody")!.addEventListener('click', (e)=>{
         const elm = e.target as HTMLElement;
         const row = elm.closest<HTMLTableRowElement>('tr')!;
         const isbn = (row.querySelector<HTMLDivElement>(".isbn")!.innerText);
-        if (confirm(`Are you sure to delete the ${isbn}?`)){
-            row.remove();
-        }
+        const promise = Swal.fire({
+            title: 'Confirm?',
+            text: `Are you sure to delete the ${isbn}?`,
+            icon: 'question',
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            showDenyButton: true
+        }) as Promise<any>;
+        promise.then((resolve)=> {
+           if (resolve.isConfirmed){
+               row.remove();
+           }
+        });
+
+        // if (confirm(`Are you sure to delete the ${isbn}?`)){
+        //     row.remove();
+        // }
     }
 });
+
+declare const Swal: any;
 
