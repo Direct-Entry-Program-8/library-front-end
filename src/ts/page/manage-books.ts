@@ -144,6 +144,7 @@ paginationElm.addEventListener('click', (e) => {
             initPagination(++activePage);
         } else {
             initPagination(+elm.innerText);
+            loadBooks(txtSearch.value, activePage);
         }
         e.stopPropagation();
     }
@@ -200,3 +201,45 @@ tblBooks.querySelector("tbody")!.addEventListener('click', (e) => {
 });
 
 declare const Swal: any;
+
+const BOOKS_API = `${process.env.API_URL}/v2/books`;
+
+loadBooks();
+const txtSearch = document.querySelector<HTMLInputElement>("#txt-search")!;
+
+txtSearch.addEventListener('input', () => loadBooks(txtSearch.value));
+
+function loadBooks(query: string = '', page: number = 1) {
+    httpRequest('GET', `${BOOKS_API}?q=${query}&page=${page}&size=${pageSize}`)
+        .then((data) => {
+
+            /* Let's clear the table */
+            tblBooks.querySelectorAll("tr").forEach(row => row.remove());
+            const books: Array<{
+                author: string,
+                availability: boolean,
+                isbn: string,
+                name: string,
+                preview: string
+            }> = JSON.parse(data.body);
+
+            books.forEach(book => {
+                const rowElm = document.createElement('tr');
+                rowElm.innerHTML = `
+                                <td><div class="book-preview" style="background-image: ${book.preview ?? ''}"></div></td>
+                                <td>
+                                    <div class="isbn">ISBN: ${book.isbn}</div>
+                                    <div class="book-name text-bold">${book.name}</div>
+                                    <div class="book-author">${book.author}</div>
+                                </td>
+                                <td class="trash">
+                                    <i class="fas fa-trash"></i>
+                                </td>
+                            `;
+                tblBooks.querySelector("tbody")!.append(rowElm);
+            });
+
+        }).catch((err) => {
+
+    });
+}
