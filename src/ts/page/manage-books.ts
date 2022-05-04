@@ -25,6 +25,12 @@ frmBook.addEventListener('reset', ()=> {
 frmBook.addEventListener('submit', (e)=> {
     e.preventDefault();
 
+    if (btnSave.innerText === 'EDIT'){
+        setEnableForm();
+        btnSave.innerText = 'SAVE';
+        return;
+    }
+
     const inputElms = [txtISBN, txtName, txtAuthor];
     const invalidInputElms = inputElms.filter(elm => !elm.classList.contains('is-valid'));
 
@@ -151,13 +157,13 @@ tblBooks.querySelector("tbody")!.addEventListener('click', (e)=> {
     const isbn = row.querySelector<HTMLDivElement>(".isbn")!.innerText;
     const name = row.querySelector<HTMLDivElement>(".book-name")!.innerText;
     const author = row.querySelector<HTMLDivElement>(".book-author")!.innerText;
-    const bookPreview = row.querySelector<HTMLImageElement>('.book-preview')!;
+    const bookPreview = row.querySelector<HTMLDivElement>('.book-preview')!;
 
     txtISBN.value = isbn;
 
     txtName.value = name;
     txtAuthor.value = author;
-    divThumbnail.style.backgroundImage = `url(${bookPreview.src})`;
+    divThumbnail.style.backgroundImage = bookPreview.style.backgroundImage;
     setEnableForm(false);
     btnSave.disabled = false;
     btnClear.disabled = false;
